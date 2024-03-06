@@ -22,14 +22,10 @@ public class TennisGame2 implements TennisGame {
             }
         } else if (player1Points >= 4 || player2Points >= 4) {
             int difference = player1Points - player2Points;
-            if (difference == 1) {
-                score = "Advantage " + player1Name;
-            } else if (difference == -1) {
-                score = "Advantage " + player2Name;
-            } else if (difference >= 2) {
-                score = "Win for " + player1Name;
+            if (Math.abs(difference) == 1) {
+                score = "Advantage " + (difference == 1 ? player1Name : player2Name);
             } else {
-                score = "Win for " + player2Name;
+                score = "Win for " + (difference > 1 ? player1Name : player2Name);
             }
         } else {
             score = scoreNames[player1Points] + "-" + scoreNames[player2Points];
