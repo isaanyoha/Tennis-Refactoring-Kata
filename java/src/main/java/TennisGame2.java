@@ -12,26 +12,15 @@ public class TennisGame2 implements TennisGame {
     }
 
     public String getScore() {
-        String score = "";
-
         if (player1Points == player2Points) {
-            if (player1Points < 4) {
-                score = scoreNames[player1Points] + "-All";
-            } else {
-                score = "Deuce";
-            }
+            return player1Points < 4 ? scoreNames[player1Points] + "-All" : "Deuce";
         } else if (player1Points >= 4 || player2Points >= 4) {
             int difference = player1Points - player2Points;
-            if (Math.abs(difference) == 1) {
-                score = "Advantage " + (difference == 1 ? player1Name : player2Name);
-            } else {
-                score = "Win for " + (difference > 1 ? player1Name : player2Name);
-            }
+            return Math.abs(difference) == 1 ? "Advantage " + (difference == 1 ? player1Name : player2Name) :
+                    "Win for " + (difference > 1 ? player1Name : player2Name);
         } else {
-            score = scoreNames[player1Points] + "-" + scoreNames[player2Points];
+            return scoreNames[player1Points] + "-" + scoreNames[player2Points];
         }
-
-        return score;
     }
 
     public void setPlayer1Score(int number) {
